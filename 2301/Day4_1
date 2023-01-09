@@ -3,21 +3,29 @@ import java.io.InputStreamReader;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-       char[] input = br.readLine().toCharArray();
-       int len = input.length;
-       int[] used = new int[27];
-        
-        String result = "";
-       for(char i : input) {
-            if(used[i -'a'] == 1) {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        char[] input = br.readLine().toCharArray();
+        int start = 0;
+        int end = input.length-1;
+
+        while(start < end) {
+
+            if(!(input[start]-'a' >= 0 && input[start]-'a' <= 26 || input[start]-'A'>=0 && input[start]-'A' <=26)  ) {
+                start++;
                 continue;
             }
-           
-            used[i-'a']++;
-            result += String.valueOf(i);
-       }
+            if(!(input[end]-'a' >= 0 && input[end]-'a' <= 26 || input[end]-'A'>=0 && input[end]-'A' <=26)) {
+                end--;
+                continue;
+            }
 
-       System.out.println(result);
+            char tmp = input[start];
+            input[start] = input[end];
+            input[end] = tmp;
+            start++;
+            end--;
+        }
+      
+        System.out.println(input);
     }
 }
