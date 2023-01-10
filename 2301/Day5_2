@@ -1,0 +1,24 @@
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+     char[] str = br.readLine().toUpperCase().replaceAll("[^A-Z]","" ).toCharArray();
+     int start = 0;
+     int end = str.length-1;
+     boolean flag = true;
+     while(start < end) {
+        if(str[start] != str[end]) {
+            flag = false;
+            break;
+        }
+        start++;
+        end--;
+     }
+
+     if(!flag) System.out.println("NO");
+     else System.out.println("YES");
+    }
+}
