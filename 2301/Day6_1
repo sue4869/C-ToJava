@@ -1,0 +1,18 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        char[] st = br.readLine().toCharArray();
+        String num = "";
+        for(char s : st) {
+            if(Character.isDigit(s)) {
+                num+=s;
+            }
+        }
+        
+        System.out.println(Integer.parseInt(num));
+      
+    }
+}
