@@ -1,0 +1,36 @@
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        char[] str = br.readLine().toCharArray();
+
+        System.out.print(str[0]);
+        int cnt = 1;
+        for(int x=1;x<str.length;x++){
+
+            if(str[x-1]==str[x]) {
+                cnt++;
+                if(x == str.length-1) System.out.println(cnt);
+                continue;
+            }
+            if(str[x-1] != str[x]) {
+                if(cnt > 1) {
+                    System.out.print(cnt);
+                    System.out.print(str[x]);
+                    cnt = 1;
+                    continue;
+                } 
+
+                System.out.print(str[x]);
+
+            }
+
+            
+        }
+
+
+    }
+}

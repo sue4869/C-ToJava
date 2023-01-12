@@ -25,6 +25,10 @@
 * 절대값 : Math.abs()
 * 둘중 작은값 구하기 : Math.min(a,b)
 * 특정 문자의 인덱스값 얻기 : string문자.indexOf(특정문자, 시작idx)
+* 특정문자로 바꾸기 : replace(바꿀문자,바꿔질문자) - Day7_2
+* 2진수를 아스키코드로 Integer.parseInt(2진수,2) - Day7_2
+* 아스키코드를 문자로 : 단순히 char로 바꿔주기만 하면된다. - Day7_2
 
 # 🐳오답노트
 * readLine() -> readline으로 자꾸 실수한다. L 대문자!
+* 문자열 끝에 " "(빈공간)하나 추가하기 
