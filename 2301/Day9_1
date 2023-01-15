@@ -1,0 +1,47 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+     
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    int num = Integer.parseInt(br.readLine());
+    List<Integer> alist = new ArrayList<Integer>(num);
+    List<Integer> blist = new ArrayList<Integer>(num);
+    StringTokenizer st = new StringTokenizer(br.readLine());
+    while(st.hasMoreTokens()) {
+        alist.add(Integer.parseInt(st.nextToken()));
+    }
+    StringTokenizer st2 = new StringTokenizer(br.readLine());
+    while(st2.hasMoreTokens()) {
+        blist.add(Integer.parseInt(st2.nextToken()));
+    }
+    
+    for(int x=0;x<num;x++) {
+        if(alist.get(x) == 1) {
+            if(blist.get(x) == 1) System.out.println("D");
+            if(blist.get(x) == 2) System.out.println("B");
+            if(blist.get(x) == 3) System.out.println("A");
+        }
+
+        if(alist.get(x) == 2) {
+            if(blist.get(x) == 1) System.out.println("A");
+            if(blist.get(x) == 2) System.out.println("D");
+            if(blist.get(x) == 3) System.out.println("B");
+        }
+
+        if(alist.get(x) == 3) {
+            if(blist.get(x) == 1) System.out.println("B");
+            if(blist.get(x) == 2) System.out.println("A");
+            if(blist.get(x) == 3) System.out.println("D");
+        }
+
+    }
+      
+
+    
+    }
+}
