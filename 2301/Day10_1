@@ -1,0 +1,27 @@
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int num = Integer.parseInt(br.readLine());
+        int cnt = 0;
+        int[] numbers = new int[num+1];
+        for(int x=2;x<=num;x++) {
+            if(numbers[x]== 0) {
+                cnt++;
+                numbers[x] = 1;
+                for(int y=x+1;y<num+1;y++) {
+                    if(y%x==0) numbers[y] = 1;
+                }
+            }
+        }
+
+        System.out.println(cnt);
+        
+    }
+}

@@ -1,0 +1,49 @@
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int num = Integer.parseInt(br.readLine());
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int[] numbers = new int[num];
+        int t = 0;
+        while(st.hasMoreTokens()) {
+            numbers[t++] = Integer.parseInt(st.nextToken());
+        }
+
+        for(int x :solution(num, numbers)) {
+            System.out.print(x + " ");
+        }
+       
+    }
+
+    public static ArrayList<Integer> solution(int n, int[] numbers) {
+        ArrayList<Integer> result = new ArrayList<>();
+        for(int x=0;x<n;x++) {
+            int tmp = numbers[x];
+            int res = 0;
+            while(tmp > 0) {
+                int t = tmp%10;
+                res = res*10 +t;
+                tmp = tmp/10; 
+            }
+
+            if(isPrime(res)) result.add(res);
+        }
+        return result;
+    }
+
+    public static boolean isPrime(int num) {
+        if(num==1) return false;
+        for(int y=2;y<num;y++) {
+            if(num%y == 0) return false;
+        }
+        return true;
+    }
+}

@@ -36,6 +36,7 @@
 * 배열 요소 접근 : .get() 🌟
 * 배열 요소 존재여부 : .isEmpty()
 * 여러줄 읽기 : while((line = readLine()) !=null)
+* int 배열 : int[] v = new int[] -> new int[크기]로 배열크기지정가능, 0으로 초기화됨. 
 
 # 🐳오답노트
 <섹션1>
