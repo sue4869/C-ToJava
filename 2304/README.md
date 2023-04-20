@@ -1,5 +1,5 @@
-* [18일](Day18) [코딩스터디-두 큐 합 같게만들기](https://school.programmers.co.kr/learn/courses/30/lessons/118667) | [코드](/2304/Day18/studyCoding.java) 
-* [20일](Day18) [코딩스터디-보석 쇼핑](https://school.programmers.co.kr/learn/courses/30/lessons/67258) | [코드](/2304/Day20/studyCoding) 
+* [18일](Day18) [코딩스터디-두 큐 합 같게만들기](https://school.programmers.co.kr/learn/courses/30/lessons/118667) | [코드](/2304/Day18/studyingCoding.java) 
+* [20일](Day18) [코딩스터디-보석 쇼핑](https://school.programmers.co.kr/learn/courses/30/lessons/67258) | [코드](/2304/Day20/studyingCoding) 
 
 
 # 🍭새로알게된 지식
