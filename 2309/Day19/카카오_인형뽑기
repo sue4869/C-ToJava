@@ -1,0 +1,55 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Stack;
+import java.util.StringTokenizer;
+
+public class Main {
+  public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int size = Integer.parseInt(br.readLine());
+        int[][] board = new int[size][size];
+        for (int x = 0; x < size; x++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int next = 0;
+            while (st.hasMoreTokens()) {
+                board[x][next++] = Integer.parseInt(st.nextToken());
+            }
+        }
+        int moveSize = Integer.parseInt(br.readLine());
+        int[] move = new int[moveSize];
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        for (int x = 0; x < moveSize; x++) {
+            move[x] = Integer.parseInt(st.nextToken());
+        }
+        Solution solution = new Solution();
+        System.out.println(solution.solve(board, move));
+    }
+        static class Solution {
+            public int solve(int[][] board, int[] move) {
+                Stack<Integer> stack = new Stack<>();
+                int cnt = 0;
+                for (int x = 0; x < move.length; x++) {
+
+                    for (int y = 0; y < board.length; y++) {
+                        int number = board[y][move[x] - 1];
+                        if (number != 0) {
+                            board[y][move[x] - 1] = 0;
+                            if (!stack.isEmpty() && stack.peek() == number) {
+                                cnt += 2;
+                                stack.pop();
+                                break;
+                            } else {
+                                stack.push(number);
+                            }
+                            break;
+                        }
+
+
+                    }
+
+                }
+                return cnt;
+            }
+        }
+    }

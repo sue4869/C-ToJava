@@ -1,0 +1,28 @@
+class Solution {
+  public int longestConsecutive(int[] nums) {
+            if(nums.length == 0) return 0;
+            Arrays.sort(nums);
+
+            int cnt = 1;
+            int max = 1;
+            for (int x = 1; x < nums.length; x++) {
+                int second = nums[x];
+                int first = nums[x-1];
+                if(first == second) {
+                    continue;
+                }
+
+                if (first + 1 == second) {
+                    cnt++;
+                    if(max < cnt) {
+                        max = cnt;
+                    }
+                    continue;
+                }
+                max = Math.max(max,cnt);
+                cnt = 1;
+            }
+
+            return max;
+        }
+}
