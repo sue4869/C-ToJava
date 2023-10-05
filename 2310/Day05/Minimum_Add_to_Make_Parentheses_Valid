@@ -1,0 +1,22 @@
+class Solution {
+    public int minAddToMakeValid(String s) {
+        Stack<String> stack = new Stack<>();
+        String[] tmp = s.split("");
+
+        for(int x=0;x<tmp.length;x++) {
+            if(Objects.equals(tmp[x], "(")) {
+                stack.push(tmp[x]);
+                continue;
+            }
+
+            if(!stack.isEmpty() && Objects.equals(stack.peek(), "(")) {
+                stack.pop();
+                continue;
+            }
+
+            stack.push(tmp[x]);
+        }
+
+        return stack.size();
+    }
+}
