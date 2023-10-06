@@ -1,0 +1,63 @@
+class Solution {
+    public int largestIsland(int[][] grid) {
+        int m = grid.length, n = grid[0].length;
+        int max = 0;
+        int[][] dirs = new int[][] {{1, 0},{-1, 0},{0, 1},{0, -1}};
+        int islandnumber = 2;
+
+        // stores {islandnumber, size}
+        Map<Integer, Integer> map = new HashMap<>();
+
+        // first find largest island and distinguish each island by assigning an unique number
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == 1) {
+                    int size = dfs(grid, i, j, islandnumber);
+                    map.put(islandnumber++, size);
+                    max = Math.max(max, size);
+                }
+            }
+        }
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == 0) {
+                    max = Math.max(max, connectedislands(grid, i, j, dirs, map));
+                }
+            }
+        }
+
+        return max;
+    }
+
+    private int connectedislands(int[][] grid, int x, int y, int[][] dirs, Map<Integer, Integer> map) {
+        int size = 1;
+        Set<Integer> neighbours = new HashSet<>();
+        for (int[] dir : dirs) {
+            int x1 = x + dir[0], y1 = y + dir[1];
+            if (x1 >= 0 && x1 < grid.length && y1 >=0 && y1 < grid[0].length && grid[x1][y1] != 0) {
+                neighbours.add(grid[x1][y1]);
+            }
+        }
+
+
+        for (int islandnumber : neighbours) {
+            size += map.getOrDefault(islandnumber, 0);
+        }
+
+        return size;
+    }
+
+    private int dfs(int[][] grid, int x, int y, int islandnumber) {
+        if (x < 0 || x >= grid.length || y < 0 || y >= grid[0].length || grid[x][y] != 1) {
+            return 0;
+        }
+
+        grid[x][y] = islandnumber;
+
+        return 1 + dfs(grid, x + 1, y, islandnumber)
+            + dfs(grid, x - 1, y, islandnumber)
+            + dfs(grid, x, y + 1, islandnumber)
+            + dfs(grid, x, y - 1, islandnumber);
+    }
+}
