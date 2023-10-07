@@ -7,32 +7,33 @@ import java.util.*;
 
 public class solve2 {
 
+    static int MAX = 0;
     public static void main(String[] args) throws IOException {
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    StringTokenizer st = new StringTokenizer(br.readLine());
-    int size = Integer.parseInt(st.nextToken());
-    int change = Integer.parseInt(st.nextToken());
-
-    int[] num = new int[size];
-    StringTokenizer st2 = new StringTokenizer(br.readLine());
-    for(int x=0;x<size;x++) {
-        num[x] = Integer.parseInt(st2.nextToken());
+        int[][] grid = {{1,1},{1,0}};
+        System.out.println(largestIsland(grid));
     }
-    int answer = 0;
-    int cnt = 0;
-    int lt = 0;
 
-    for(int rt=0;rt<size;rt++) {
-        if(num[rt] == 0 ) cnt++;
-        while(cnt>change) {
-            if(num[lt]==0) cnt--;
-            lt++;
+
+    public static int largestIsland(int[][] grid) {
+
+        int maxSize = 0;
+        for(int y=0;y<grid.length;y++) {
+            int cnt = 0;
+            for(int x=0;x<grid[y].length;x++) {
+                if(grid[y][x] == 1) continue;
+                cnt++;
+                if(y-1>=0 && grid[y-1][x] == 1) cnt++;
+                if(y+1<grid.length && grid[y+1][x] ==1) cnt++;
+                if(x-1>=0 && grid[y][x-1]==1) cnt++;
+                if(x+1<grid[y].length && grid[y][x+1]==1) cnt++;
+
+
+                maxSize = Math.max(maxSize, cnt);
+            }
         }
-        answer = Math.max(answer,rt -lt +1);
+
+        return maxSize;
     }
 
-        System.out.println(answer);
-
-    }
 
 }

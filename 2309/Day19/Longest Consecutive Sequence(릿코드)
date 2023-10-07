@@ -26,3 +26,4 @@ class Solution {
             return max;
         }
 }
+//O(N) 이니 map 또는 set 사용, 정렬은 N(logN)이니 안된다.
