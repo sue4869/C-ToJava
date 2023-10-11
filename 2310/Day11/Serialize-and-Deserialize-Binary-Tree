@@ -1,0 +1,59 @@
+public class Codec {
+
+    public ArrayDeque<TreeNode> dq = new ArrayDeque<>(10000);
+    public StringBuilder sb = new StringBuilder("[");
+    public String serialize(TreeNode root) {
+        if(root != null){
+            sb.append(Integer.toString(root.val));
+            dq.add(root);
+            TreeNode temp;
+            while(!dq.isEmpty()) {
+                temp = dq.poll();
+                sb.append(",");
+                if (temp.left == null) sb.append("null");
+                else {
+                    sb.append(Integer.toString(temp.left.val));
+                    dq.add(temp.left);
+                }
+                sb.append(",");
+                if (temp.right == null) sb.append("null");
+                else {
+                    sb.append(Integer.toString(temp.right.val));
+                    dq.add(temp.right);
+                }
+            }
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+    public TreeNode createNode(String str){
+        return new TreeNode(Integer.parseInt(str));
+    }
+    public ArrayDeque<TreeNode> deque = new ArrayDeque<>(10000);
+    public String[] arr;
+    public TreeNode deserialize(String data) {
+        if(data.length()==2) return null;
+        data = data.substring(1,data.length()-1);
+        arr = data.split(",");
+        int idx = 0;
+        TreeNode root = createNode(arr[idx++]);
+        TreeNode temp;
+        deque.add(root);
+        while(idx < arr.length){
+            temp = deque.poll();
+            if(arr[idx].equals("null"));
+            else{
+                temp.left = createNode(arr[idx]);
+                deque.add(temp.left);
+            }
+            idx++;
+            if(arr[idx].equals("null"));
+            else{
+                temp.right = createNode(arr[idx]);
+                deque.add(temp.right);
+            }
+            idx++;
+        }
+        return root;
+    }
+}
