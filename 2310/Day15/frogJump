@@ -1,0 +1,25 @@
+class Solution {
+    public boolean canCross(int[] stones) {
+        if (stones[1] > 1) {
+            return false;
+        }
+        if (stones.length == 2) {
+            return true;
+        }
+
+        return helper(stones, 1, 1);
+    }
+
+    private boolean helper(int[] arr, int startIndex, int step) {
+        boolean pass = false;
+        if (startIndex == arr.length - 1) {
+            return true;
+        }
+        for (int i = startIndex + 1; i < arr.length; i++) {
+            if(arr[i] <= arr[startIndex] + step + 1 && arr[i] >= arr[startIndex] + step - 1){
+                pass = pass || helper(arr, i, arr[i] - arr[startIndex]);
+            }
+        }
+        return pass;
+    }
+}
