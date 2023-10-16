@@ -1,0 +1,8 @@
+class Solution {
+    public int rangeSumBST(TreeNode root, int L, int R) {
+
+        if(root == null) return 0;
+
+        return  ((root.val >= L && root.val <=R)? root.val : 0) + rangeSumBST(root.left,L,R) + rangeSumBST(root.right,L,R); //자신의 값이 조건에 맞을 경우 좌우 자식노드에서 탐색해 합산해 온 값에 더하여 반환한다
+    }
+}
