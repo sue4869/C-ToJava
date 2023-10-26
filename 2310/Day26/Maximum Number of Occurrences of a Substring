@@ -1,0 +1,37 @@
+class Solution {
+    public int maxFreq(String s, int maxLetters, int minSize, int maxSize) {
+      int n=s.length();
+        Map<Character,Integer>freqMap=new HashMap<>();
+        Map<String,Integer>ansFreqMap=new HashMap<>();
+        int countOfUniqueChar=0;
+        int ans=0;
+        int i=0;
+        int j=-1;
+      for(;i<minSize-1;i++){
+          char ch=s.charAt(i);
+          freqMap.put(ch,freqMap.getOrDefault(ch,0)+1);
+      }
+        i--;
+        while(i<n-1){
+            i++;
+               char ch=s.charAt(i);
+          freqMap.put(ch,freqMap.getOrDefault(ch,0)+1);
+            countOfUniqueChar=freqMap.size();
+            if(countOfUniqueChar<=maxLetters){
+               String sub= s.substring(j+1,i+1);
+                ansFreqMap.put(sub,ansFreqMap.getOrDefault(sub,0)+1);
+            }
+            j++;
+              ch=s.charAt(j);
+             freqMap.put(ch,freqMap.get(ch)-1);
+            if(freqMap.get(ch)==0)freqMap.remove(ch);
+
+        }
+        for(String key:ansFreqMap.keySet()){
+            int freqVal=ansFreqMap.get(key);
+            ans=Math.max(ans,freqVal);
+        }
+        return ans;
+
+    }
+}
